@@ -65,9 +65,12 @@ func (fo *FilterOption) ApplyDefaults() *FilterOption {
 		}
 	}
 
+	fo.sortBy = fo.SortBy
+
 	if len(fo.SortBy) > 0 && []rune(fo.SortBy)[0] == '-' {
 		fo.desc = true
 		fo.sortBy = string([]rune(fo.SortBy)[1:])
+		fo.SortBy = fo.sortBy
 	}
 	return fo
 }
